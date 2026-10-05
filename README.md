@@ -2,6 +2,7 @@
 
 A modern, responsive weather application built with **HTML, CSS, and JavaScript**. Weatherly allows users to search for cities worldwide and view current weather conditions, atmospheric details, and a multi-day forecast through a clean and interactive dashboard.
 ## 🌐 Live Website
+https://unnatijain09.github.io/wheatherly-web/
 
 
 
