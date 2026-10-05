@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Weatherly — A modern weather dashboard"
+    >
+
+    <title>Weatherly — Weather Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                ☁
+            </div>
+
+            <div>
+                <h1>Weatherly</h1>
+                <p>Your weather, beautifully simple.</p>
+            </div>
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="icon-button"
+                id="refresh-btn"
+                aria-label="Refresh weather"
+                title="Refresh weather"
+            >
+                ↻
+            </button>
+
+            <button
+                type="button"
+                class="icon-button"
+                id="theme-toggle"
+                aria-label="Switch to dark mode"
+                title="Toggle theme"
+            >
+                ☾
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="container">
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <div class="search-heading">
+
+                <span class="eyebrow">
+                    WEATHER SEARCH
+                </span>
+
+                <h2>
+                    Find weather anywhere.
+                </h2>
+
+                <p>
+                    Search for a city to see its current
+                    conditions and upcoming forecast.
+                </p>
+
+            </div>
+
+
+            <form
+                class="search-form"
+                id="search-form"
+            >
+
+                <div class="search-input-wrapper">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="city-input"
+                        placeholder="Search city..."
+                        autocomplete="off"
+                        aria-label="Search for a city"
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="search-button"
+                    id="search-button"
+                >
+                    Search
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================
+             STATUS AREA
+        ====================================== -->
+
+        <div
+            class="status-message"
+            id="status-message"
+            hidden
+        >
+            <span id="status-icon">!</span>
+
+            <span id="status-text">
+                Something went wrong.
+            </span>
+        </div>
+
+
+        <!-- =====================================
+             LOADING
+        ====================================== -->
+
+        <section
+            class="loading-state"
+            id="loading-state"
+            hidden
+        >
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Fetching weather data...
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             WEATHER CONTENT
+        ====================================== -->
+
+        <section
+            class="weather-content"
+            id="weather-content"
+            hidden
+        >
+
+            <!-- CURRENT WEATHER -->
+
+            <div class="current-weather-card">
+
+                <div class="location-row">
+
+                    <div>
+
+                        <p class="location-label">
+                            CURRENT WEATHER
+                        </p>
+
+                        <h2 id="location-name">
+                            Mumbai
+                        </h2>
+
+                        <p id="location-country">
+                            India
+                        </p>
+
+                    </div>
+
+
+                    <div class="location-date">
+
+                        <span id="current-date">
+                            Today
+                        </span>
+
+                        <span id="current-time">
+                            --:--
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="weather-main">
+
+                    <div class="weather-icon-large" id="weather-icon">
+                        ☀️
+                    </div>
+
+                    <div class="temperature-block">
+
+                        <div class="temperature">
+                            <span id="temperature">--</span>
+                            <sup>°C</sup>
+                        </div>
+
+                        <p id="weather-description">
+                            Clear Sky
+                        </p>
+
+                        <p class="feels-like">
+                            Feels like
+                            <strong id="feels-like">
+                                --°C
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WEATHER DETAILS -->
+
+                <div class="weather-details">
+
+                    <div class="weather-detail">
+
+                        <span class="detail-icon">
+                            💧
+                        </span>
+
+                        <div>
+                            <span class="detail-label">
+                                Humidity
+                            </span>
+
+                            <strong id="humidity">
+                                --%
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-detail">
+
+                        <span class="detail-icon">
+                            💨
+                        </span>
+
+                        <div>
+                            <span class="detail-label">
+                                Wind
+                            </span>
+
+                            <strong id="wind-speed">
+                                -- km/h
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-detail">
+
+                        <span class="detail-icon">
+                            👁️
+                        </span>
+
+                        <div>
+                            <span class="detail-label">
+                                Visibility
+                            </span>
+
+                            <strong id="visibility">
+                                -- km
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-detail">
+
+                        <span class="detail-icon">
+                            🌡️
+                        </span>
+
+                        <div>
+                            <span class="detail-label">
+                                Pressure
+                            </span>
+
+                            <strong id="pressure">
+                                -- hPa
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 FORECAST
+            ================================== -->
+
+            <section class="forecast-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">
+                            FORECAST
+                        </span>
+
+                        <h2>
+                            Upcoming weather
+                        </h2>
+                    </div>
+
+                    <span
+                        class="forecast-location"
+                        id="forecast-location"
+                    >
+                        5 days
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="forecast-grid"
+                    id="forecast-grid"
+                >
+                    <!-- Forecast cards generated by JavaScript -->
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 LAST UPDATED
+            ================================== -->
+
+            <div class="last-updated">
+
+                <span>
+                    Last updated
+                </span>
+
+                <strong id="last-updated">
+                    Just now
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             INITIAL EMPTY STATE
+        ====================================== -->
+
+        <section
+            class="welcome-state"
+            id="welcome-state"
+        >
+
+            <div class="welcome-icon">
+                🌤️
+            </div>
+
+            <h2>
+                What's the weather like?
+            </h2>
+
+            <p>
+                Search for a city above to get
+                real-time weather information.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <p>
+            Weatherly · Built with HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
